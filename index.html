@@ -50,19 +50,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-
 .burger span{width:26px;height:3px;background:var(--violeta);border-radius:2px;}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--violeta) 0%,#2e2f5e 55%,var(--azul) 100%);color:#fff;position:relative;overflow:hidden;padding:90px 0 100px;}
+.hero{background:linear-gradient(135deg,var(--violeta) 0%,#2e2f5e 55%,var(--azul) 100%);color:#fff;position:relative;overflow:hidden;padding:80px 0 90px;}
 .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(136,210,248,.25),transparent 70%);border-radius:50%;}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;z-index:2;}
-.hero h1{font-size:52px;font-weight:900;margin-bottom:20px;}
+.hero::before{content:"";position:absolute;left:-100px;bottom:-140px;width:360px;height:360px;background:radial-gradient(circle,rgba(0,167,157,.2),transparent 70%);border-radius:50%;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;position:relative;z-index:2;}
+.hero h1{font-size:50px;font-weight:900;margin-bottom:20px;}
 .hero h1 .hl{color:var(--celeste);}
-.hero p{font-size:20px;color:#dfe6ee;margin-bottom:32px;max-width:560px;}
-.hero-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
+.hero p{font-size:19px;color:#dfe6ee;margin-bottom:28px;max-width:560px;}
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;}
 .hb{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:40px;padding:8px 18px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
-.hero-card{background:#fff;border-radius:26px;padding:32px;box-shadow:0 24px 60px rgba(0,0,0,.35);color:#2b2233;text-align:center;}
-.hero-card .qr{width:200px;height:200px;border-radius:14px;margin:0 auto 16px;display:block;}
-.hero-card h3{color:var(--violeta);font-size:22px;margin-bottom:6px;}
-.hero-card p{color:var(--gristxt);font-size:15px;margin:0;}
+.hero-illus{position:relative;}
+.hero-illus svg{width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.3));}
+.hero-qr{position:absolute;bottom:-18px;right:-6px;background:#fff;border-radius:16px;padding:12px;box-shadow:0 14px 34px rgba(0,0,0,.35);text-align:center;}
+.hero-qr img{width:104px;height:104px;display:block;}
+.hero-qr span{display:block;color:var(--violeta);font-size:11px;font-weight:800;margin-top:5px;letter-spacing:.3px;}
 
 /* TRUST STRIP */
 .trust{background:var(--teal);color:#fff;padding:22px 0;}
@@ -71,16 +73,40 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-
 
 /* SERVICIOS */
 .serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
-.scard{background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:32px 28px;border-top:5px solid var(--azul);transition:transform .2s ease,box-shadow .2s ease;}
+.scard{background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:32px 28px;border-top:5px solid var(--azul);transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;position:relative;}
 .scard:hover{transform:translateY(-6px);box-shadow:0 18px 46px rgba(59,36,71,.18);}
 .scard .ic{width:60px;height:60px;margin-bottom:16px;}
 .scard h3{font-size:22px;color:var(--violeta);margin-bottom:8px;}
 .scard p{font-size:15px;color:var(--gristxt);}
+.scard .more{margin-top:14px;color:var(--teal);font-weight:800;font-size:14px;display:flex;align-items:center;gap:6px;}
 .scard:nth-child(2){border-top-color:var(--salmon);}
 .scard:nth-child(3){border-top-color:var(--teal);}
 .scard:nth-child(4){border-top-color:var(--celeste);}
 .scard:nth-child(5){border-top-color:var(--violeta);}
 .scard:nth-child(6){border-top-color:var(--azul);}
+
+/* MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(30,20,40,.6);backdrop-filter:blur(4px);z-index:300;display:none;align-items:center;justify-content:center;padding:24px;}
+.modal-ov.open{display:flex;}
+.modal{background:#fff;border-radius:24px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:modalin .28s ease;}
+@keyframes modalin{from{opacity:0;transform:translateY(30px) scale(.97);}to{opacity:1;transform:none;}}
+.modal-head{padding:32px 34px 24px;color:#fff;position:relative;border-radius:24px 24px 0 0;}
+.modal-head .mic{width:64px;height:64px;background:rgba(255,255,255,.18);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.modal-head h2{font-size:28px;color:#fff;margin:0;}
+.modal-head p{color:rgba(255,255,255,.9);font-size:15px;margin-top:8px;}
+.modal-close{position:absolute;top:22px;right:24px;width:38px;height:38px;background:rgba(255,255,255,.2);border:none;border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;}
+.modal-close:hover{background:rgba(255,255,255,.35);}
+.modal-body{padding:28px 34px 34px;}
+.modal-body h4{color:var(--violeta);font-size:16px;margin:20px 0 12px;display:flex;align-items:center;gap:8px;}
+.modal-body h4:first-child{margin-top:0;}
+.modal-body ul{list-style:none;}
+.modal-body li{padding:9px 0 9px 30px;position:relative;font-size:15px;color:#41394d;border-bottom:1px solid #f0ecf3;}
+.modal-body li:last-child{border-bottom:none;}
+.modal-body li::before{content:"";position:absolute;left:0;top:13px;width:16px;height:16px;background:var(--teal);border-radius:50%;box-shadow:inset 0 0 0 3px #fff, 0 0 0 2px var(--teal);}
+.modal-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+.modal-tags span{background:var(--gris);color:var(--violeta);font-size:13px;font-weight:700;padding:6px 14px;border-radius:30px;}
+.modal-cta{margin-top:26px;}
+.modal-cta .btn-wa{width:100%;justify-content:center;}
 
 /* TRAMITE EXPLICADO */
 .tramite{background:var(--gris);}
@@ -95,9 +121,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-
 
 /* PROCESO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px;position:relative;}
-.step{background:#fff;border-radius:18px;padding:28px 22px;box-shadow:var(--shadow);position:relative;}
-.step .n{position:absolute;top:-16px;left:22px;width:40px;height:40px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;}
-.step h3{font-size:18px;color:var(--violeta);margin:12px 0 6px;}
+.step{background:#fff;border-radius:18px;padding:28px 22px;box-shadow:var(--shadow);position:relative;text-align:center;}
+.step .n{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;}
+.step .sic{width:56px;height:56px;margin:14px auto 6px;}
+.step h3{font-size:18px;color:var(--violeta);margin:6px 0;}
 .step p{font-size:14px;color:var(--gristxt);}
 
 /* MARCO LEGAL */
@@ -125,7 +152,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-
 .ocard h3{color:var(--violeta);font-size:19px;margin-bottom:6px;}
 .ocard p{color:var(--gristxt);font-size:14px;margin-bottom:16px;flex:1;}
 .ocard .olink{color:var(--azul);font-weight:800;font-size:14px;display:flex;align-items:center;gap:6px;}
-.ocard .pending{color:#b09;font-size:12px;font-style:italic;}
 
 /* POR QUE */
 .why{background:var(--gris);}
@@ -190,7 +216,8 @@ footer a:hover{color:var(--celeste);}
   .hero-grid,.contact-grid,.tram-grid,.legal-grid{grid-template-columns:1fr;gap:34px;}
   .serv-grid,.why-grid,.steps,.oficiales-grid{grid-template-columns:1fr 1fr;}
   .foot-grid{grid-template-columns:1fr;gap:28px;}
-  .hero h1{font-size:40px;} .h2,.cinfo h2{font-size:32px;}
+  .hero h1{font-size:38px;} .h2,.cinfo h2{font-size:32px;}
+  .hero-illus{max-width:420px;margin:0 auto;}
   .nav-links{position:fixed;top:74px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;box-shadow:0 12px 30px rgba(0,0,0,.12);display:none;}
   .nav-links.open{display:flex;}
   .burger{display:flex;}
@@ -198,7 +225,8 @@ footer a:hover{color:var(--celeste);}
 }
 @media(max-width:560px){
   .serv-grid,.why-grid,.steps,.oficiales-grid{grid-template-columns:1fr;}
-  .hero h1{font-size:34px;} .section{padding:56px 0;}
+  .hero h1{font-size:32px;} .section{padding:56px 0;}
+  .modal-head{padding:26px 24px 20px;} .modal-body{padding:24px;}
 }
 </style>
 </head>
@@ -241,10 +269,48 @@ footer a:hover{color:var(--celeste);}
         <div class="hb">🏛️ Visado COPAIPA</div>
       </div>
     </div>
-    <div class="hero-card">
-      <img src="assets/qr.png" class="qr" alt="QR WhatsApp LOOKBEN">
-      <h3>Escaneá y consultá</h3>
-      <p>Abrí la cámara y escribinos<br>directo por WhatsApp.</p>
+    <div class="hero-illus">
+      <!-- Ilustración vectorial: local comercial protegido -->
+      <svg viewBox="0 0 460 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="230" cy="350" rx="180" ry="22" fill="rgba(0,0,0,.18)"/>
+        <!-- edificio -->
+        <rect x="110" y="150" width="240" height="185" rx="8" fill="#fff"/>
+        <rect x="110" y="150" width="240" height="46" rx="8" fill="#00558C"/>
+        <rect x="110" y="186" width="240" height="10" fill="#00A79D"/>
+        <!-- toldo -->
+        <path d="M96 196 h268 l-16 30 h-236 Z" fill="#3B2447"/>
+        <path d="M96 196 h44 l-8 30 h-52 Z" fill="#EFA27F"/>
+        <path d="M184 196 h44 l0 30 h-52 Z" fill="#EFA27F"/>
+        <path d="M272 196 h44 l8 30 h-52 Z" fill="#EFA27F"/>
+        <!-- vidriera -->
+        <rect x="132" y="238" width="112" height="74" rx="5" fill="#E3EDED"/>
+        <rect x="132" y="238" width="112" height="74" rx="5" stroke="#88D2F8" stroke-width="3"/>
+        <line x1="188" y1="238" x2="188" y2="312" stroke="#88D2F8" stroke-width="3"/>
+        <line x1="132" y1="275" x2="244" y2="275" stroke="#88D2F8" stroke-width="3"/>
+        <!-- puerta -->
+        <rect x="264" y="252" width="60" height="60" rx="4" fill="#3B2447"/>
+        <rect x="272" y="260" width="44" height="52" rx="3" fill="#00558C"/>
+        <circle cx="279" cy="288" r="3" fill="#88D2F8"/>
+        <!-- cartel OPEN -->
+        <rect x="286" y="230" width="34" height="16" rx="4" fill="#00A79D"/>
+        <!-- escudo protector flotante -->
+        <g transform="translate(196,34)">
+          <path d="M34 0 68 13 v30 c0 26-16 41-34 48-18-7-34-22-34-48V13Z" fill="#3B2447" stroke="#88D2F8" stroke-width="3"/>
+          <path d="M34 10 58 19 v24 c0 20-12 32-24 37-12-5-24-17-24-37V19Z" fill="#fff"/>
+          <path d="M20 44 l10 10 18-20" stroke="#00A79D" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <!-- lineas punteadas conexion -->
+        <path d="M150 150 Q196 96 214 84" stroke="#88D2F8" stroke-width="2.5" stroke-dasharray="5 6" fill="none"/>
+        <path d="M312 150 Q276 100 262 86" stroke="#88D2F8" stroke-width="2.5" stroke-dasharray="5 6" fill="none"/>
+        <!-- iconos flotantes -->
+        <g transform="translate(60,120)"><circle r="26" fill="#00A79D"/><path d="M-2 -12 c1 5 7 6 7 12 a5 5 0 0 1-10 0 c0-3 1-4 2-6 1 2 2 2 2 2 0-4 -1-6 -1-8Z" fill="#fff" transform="scale(1.1)"/></g>
+        <g transform="translate(392,110)"><circle r="26" fill="#EFA27F"/><g transform="translate(-13,-13)"><rect x="4" y="2" width="18" height="24" rx="2" fill="#fff"/><path d="M8 8h10M8 13h10M8 18h6" stroke="#EFA27F" stroke-width="2" stroke-linecap="round"/></g></g>
+        <g transform="translate(404,250)"><circle r="24" fill="#88D2F8"/><path d="M-10 6 a10 10 0 0 1 20 0Z" fill="#3B2447"/><path d="M0 6 6 -4" stroke="#3B2447" stroke-width="2.5" stroke-linecap="round"/></g>
+      </svg>
+      <div class="hero-qr">
+        <img src="assets/qr.png" alt="QR WhatsApp">
+        <span>ESCANEÁ Y CONSULTÁ</span>
+      </div>
     </div>
   </div>
 </header>
@@ -263,43 +329,62 @@ footer a:hover{color:var(--celeste);}
   <div class="container center">
     <span class="tag-eyebrow">Nuestros servicios</span>
     <h2 class="h2">Todo lo que tu local necesita para habilitar</h2>
-    <p class="lead">Cubrimos el ciclo completo de higiene y seguridad para comercios, gastronómicos, escuelas y salones.</p>
+    <p class="lead">Tocá cada servicio para ver el detalle: qué incluye, para quién es y qué recibís.</p>
   </div>
   <div class="container serv-grid">
-    <div class="scard">
+    <div class="scard" onclick="openModal(0)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#00558C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4 L40 9 v13 c0 11-7 18-16 21-9-3-16-10-16-21V9Z"/><path d="M17 24 l5 5 9-11"/></svg>
       <h3>Estudio de Seguridad</h3>
       <p>Documento firmado y visado COPAIPA según Ley 7467, requisito para habilitar o renovar tu local.</p>
+      <span class="more">Ver detalle →</span>
     </div>
-    <div class="scard">
+    <div class="scard" onclick="openModal(1)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#EFA27F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4c2 7 10 9 10 18a10 10 0 0 1-20 0c0-4 2-6 3-8 1 3 3 3 3 3 0-6 3-9 4-13Z"/></svg>
       <h3>Incendios y Bomberos</h3>
       <p>Certificación contra incendios, cálculo de carga de fuego y coordinación con Bomberos.</p>
+      <span class="more">Ver detalle →</span>
     </div>
-    <div class="scard">
+    <div class="scard" onclick="openModal(2)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#00A79D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="20" height="36" rx="2"/><path d="M28 24h12m0 0-5-5m5 5-5 5"/></svg>
       <h3>Planes de Evacuación</h3>
       <p>Planes de autoprotección, simulacros y armado de brigadas de emergencia.</p>
+      <span class="more">Ver detalle →</span>
     </div>
-    <div class="scard">
+    <div class="scard" onclick="openModal(3)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#3B2447" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34a18 18 0 0 1 36 0Z"/><path d="M24 34 34 20"/></svg>
       <h3>Mediciones de Higiene</h3>
       <p>Ruido, iluminación, ergonomía y puesta a tierra (PAT) con instrumental calibrado.</p>
+      <span class="more">Ver detalle →</span>
     </div>
-    <div class="scard">
+    <div class="scard" onclick="openModal(4)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#3B2447" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="8" width="28" height="34" rx="2"/><path d="M16 16h6M26 16h6M16 24h6M26 24h6M16 32h6M26 32h6"/></svg>
       <h3>Servicio Externo HyS</h3>
       <p>Asesoría mensual, gestión de legajo ART/SRT y cumplimiento normativo continuo.</p>
+      <span class="more">Ver detalle →</span>
     </div>
-    <div class="scard">
+    <div class="scard" onclick="openModal(5)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#00558C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 10 44 18 24 26 4 18Z"/><path d="M12 22v9c0 3 5 6 12 6s12-3 12-6v-9"/><path d="M44 18v9"/></svg>
       <h3>Capacitaciones</h3>
       <p>Uso de extintores, evacuación y respuesta ante emergencias para tu personal.</p>
+      <span class="more">Ver detalle →</span>
     </div>
   </div>
 </section>
 
-<!-- EL TRAMITE EXPLICADO -->
+<!-- MODAL SERVICIO -->
+<div class="modal-ov" id="modalOv" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-head" id="modalHead">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="mic" id="modalIc"></div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalIntro"></p>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- TRAMITE EXPLICADO -->
 <section class="section tramite" id="tramite">
   <div class="container center">
     <span class="tag-eyebrow">El trámite, explicado simple</span>
@@ -310,10 +395,8 @@ footer a:hover{color:var(--celeste);}
     <div class="tram-txt">
       <h3><span class="badge-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span> ¿Qué es el Estudio de Seguridad?</h3>
       <p>Es un documento técnico que verifica que tu local cumple las condiciones de seguridad para recibir público (salidas, incendios, instalaciones, etc.). Debe estar firmado por un profesional habilitado en Higiene y Seguridad.</p>
-
       <h3><span class="badge-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></span> ¿Cuándo lo necesito?</h3>
       <p>Cuando querés <strong>habilitar un local nuevo</strong> o <strong>renovar</strong> la habilitación de uno existente que recibe público: comercios, gastronómicos, escuelas, salones, oficinas y más.</p>
-
       <h3><span class="badge-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7Z"/><path d="M9 12l2 2 4-4"/></svg></span> ¿Quién lo firma y avala?</h3>
       <p>Un profesional matriculado. Además, la documentación se <strong>visa en COPAIPA</strong>, el Consejo Profesional que verifica el cumplimiento según la <strong>Ley 7467</strong>.</p>
     </div>
@@ -345,10 +428,18 @@ footer a:hover{color:var(--celeste);}
     <h2 class="h2">Tu habilitación en 4 pasos</h2>
   </div>
   <div class="container steps">
-    <div class="step"><div class="n">1</div><h3>Contactás</h3><p>Nos escribís por WhatsApp y nos contás de tu local.</p></div>
-    <div class="step"><div class="n">2</div><h3>Relevamos</h3><p>Visitamos y evaluamos qué requiere tu rubro y superficie.</p></div>
-    <div class="step"><div class="n">3</div><h3>Elaboramos</h3><p>Confeccionamos, firmamos y visamos el Estudio de Seguridad.</p></div>
-    <div class="step"><div class="n">4</div><h3>Presentás</h3><p>Te entregamos todo listo para el Municipio. ¡Habilitado!</p></div>
+    <div class="step"><div class="n">1</div>
+      <svg class="sic" viewBox="0 0 48 48" fill="none" stroke="#00A79D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M40 30a4 4 0 0 1-4 4H14l-8 8V10a4 4 0 0 1 4-4h26a4 4 0 0 1 4 4Z"/><path d="M16 18h16M16 26h10"/></svg>
+      <h3>Contactás</h3><p>Nos escribís por WhatsApp y nos contás de tu local.</p></div>
+    <div class="step"><div class="n">2</div>
+      <svg class="sic" viewBox="0 0 48 48" fill="none" stroke="#00558C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="21" r="14"/><path d="M31 31l10 10"/></svg>
+      <h3>Relevamos</h3><p>Visitamos y evaluamos qué requiere tu rubro y superficie.</p></div>
+    <div class="step"><div class="n">3</div>
+      <svg class="sic" viewBox="0 0 48 48" fill="none" stroke="#EFA27F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="6" width="28" height="36" rx="3"/><path d="M17 16h14M17 24h14M17 32h9"/></svg>
+      <h3>Elaboramos</h3><p>Confeccionamos, firmamos y visamos el Estudio de Seguridad.</p></div>
+    <div class="step"><div class="n">4</div>
+      <svg class="sic" viewBox="0 0 48 48" fill="none" stroke="#3B2447" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24l10 10 22-22"/></svg>
+      <h3>Presentás</h3><p>Te entregamos todo listo para el Municipio. ¡Habilitado!</p></div>
   </div>
 </section>
 
@@ -483,7 +574,7 @@ footer a:hover{color:var(--celeste);}
       <div class="cline"><div class="ci"><svg width="24" height="24" viewBox="0 0 32 32" fill="#88D2F8"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.9 6.5L4 29l7.2-1.9c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3Z"/></svg></div><div><strong>WhatsApp</strong><br>362 431-3645</div></div>
       <div class="cline"><div class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#88D2F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><strong>Email</strong><br>lookbenhys@gmail.com</div></div>
       <div class="cline"><div class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#88D2F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></div><div><strong>Ubicación</strong><br>Salta Capital, Argentina</div></div>
-      <!-- ===== FASE 2: cuando tengas Instagram/Facebook, reemplazá los 2 wa.me de abajo por tus URLs reales (ej: https://instagram.com/lookben.hys) ===== -->
+      <!-- ===== FASE 2: cuando tengas Instagram/Facebook, reemplazá los 2 wa.me de abajo por tus URLs reales ===== -->
       <div class="csocial">
         <a href="https://wa.me/5493624313645?text=Hola%20LOOKBEN!%20Quiero%20consultar%20por%20el%20Estudio%20de%20Seguridad." title="Instagram (próximamente)" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.2" fill="#fff" stroke="none"/></svg></a>
         <a href="https://wa.me/5493624313645?text=Hola%20LOOKBEN!%20Quiero%20consultar%20por%20el%20Estudio%20de%20Seguridad." title="Facebook (próximamente)" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M13 3h4v4h-3c-.6 0-1 .4-1 1v3h4l-.6 4H13v6H9v-6H6v-4h3V7c0-2.2 1.8-4 4-4Z"/></svg></a>
@@ -553,6 +644,70 @@ footer a:hover{color:var(--celeste);}
 </a>
 
 <script>
+/* ===== Datos detallados de cada servicio ===== */
+const SERVICIOS=[
+ {color:'#00558C', ic:'<svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4 L40 9 v13 c0 11-7 18-16 21-9-3-16-10-16-21V9Z"/><path d="M17 24 l5 5 9-11"/></svg>',
+  title:'Estudio de Seguridad', intro:'El documento clave para habilitar o renovar tu local ante el Municipio.',
+  que:'Es un informe técnico que evalúa y certifica que tu local cumple las condiciones de seguridad exigidas por la normativa (Ley 7467). Lo firma un profesional matriculado y se visa en COPAIPA.',
+  incluye:['Relevamiento integral del local y sus instalaciones','Evaluación de riesgos y condiciones de seguridad','Confección del informe técnico profesional','Firma de profesional habilitado','Gestión del visado en COPAIPA','Documento listo para presentar en el Municipio'],
+  para:'Todo local que recibe público y necesita habilitación nueva o renovación.',
+  tags:['Ley 7467','Visado COPAIPA','Habilitación municipal']},
+
+ {color:'#EFA27F', ic:'<svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4c2 7 10 9 10 18a10 10 0 0 1-20 0c0-4 2-6 3-8 1 3 3 3 3 3 0-6 3-9 4-13Z"/></svg>',
+  title:'Incendios y Bomberos', intro:'Protección contra incendios y cumplimiento de las exigencias de seguridad.',
+  que:'Evaluamos el riesgo de incendio de tu local y determinamos las medidas de protección necesarias, incluyendo el cálculo de carga de fuego y la coordinación con el cuerpo de Bomberos cuando corresponde.',
+  incluye:['Cálculo de carga de fuego','Determinación de matafuegos necesarios (tipo y cantidad)','Verificación de medios de escape y señalización','Sistema de detección y alarma (según el caso)','Certificación contra incendios','Coordinación con Bomberos de la Provincia'],
+  para:'Locales que requieren certificación de incendios para habilitar, especialmente gastronómicos, depósitos y locales con público.',
+  tags:['Carga de fuego','Matafuegos','Certificación']},
+
+ {color:'#00A79D', ic:'<svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="20" height="36" rx="2"/><path d="M28 24h12m0 0-5-5m5 5-5 5"/></svg>',
+  title:'Planes de Evacuación', intro:'Preparación ante emergencias para proteger a las personas.',
+  que:'Diseñamos el plan de autoprotección y evacuación de tu local, definiendo roles, recorridos de salida y puntos de encuentro, y capacitamos a tu personal para actuar ante una emergencia.',
+  incluye:['Plan de autoprotección personalizado','Definición de roles y brigadas de emergencia','Planos con rutas de evacuación y puntos de encuentro','Señalización de emergencia','Organización y ejecución de simulacros','Registro y documentación del plan'],
+  para:'Escuelas, salones de eventos, oficinas, gimnasios y todo local con concurrencia de personas.',
+  tags:['Autoprotección','Simulacros','Brigadas']},
+
+ {color:'#00558C', ic:'<svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34a18 18 0 0 1 36 0Z"/><path d="M24 34 34 20"/></svg>',
+  title:'Mediciones de Higiene', intro:'Mediciones técnicas con instrumental calibrado y protocolos oficiales.',
+  que:'Realizamos las mediciones de agentes físicos del ambiente laboral que exige la normativa, con instrumental calibrado y emitiendo los protocolos oficiales correspondientes.',
+  incluye:['Medición de nivel sonoro (ruido)','Medición de iluminación','Evaluación de carga térmica y ergonomía','Puesta a Tierra y continuidad (PAT)','Protocolos oficiales firmados','Recomendaciones de mejora'],
+  para:'Locales y empresas que deben acreditar condiciones ambientales de trabajo ante la ART o el Municipio.',
+  tags:['Ruido','Iluminación','PAT','Ergonomía']},
+
+ {color:'#3B2447', ic:'<svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="8" width="28" height="34" rx="2"/><path d="M16 16h6M26 16h6M16 24h6M26 24h6M16 32h6M26 32h6"/></svg>',
+  title:'Servicio Externo HyS', intro:'Tu asesor de Higiene y Seguridad de forma continua, sin empleado propio.',
+  que:'Actuamos como tu servicio externo de Higiene y Seguridad: te acompañamos mes a mes en el cumplimiento normativo, la gestión del legajo técnico y la relación con la ART/SRT.',
+  incluye:['Asesoría mensual permanente','Armado y mantenimiento del legajo técnico','Gestión y seguimiento con ART/SRT','Confección de RGRL y relevamientos','Actualización ante cambios normativos','Soporte ante inspecciones'],
+  para:'Empresas y comercios que necesitan cumplimiento continuo sin contratar un profesional en relación de dependencia.',
+  tags:['Asesoría mensual','Legajo ART/SRT','Cumplimiento continuo']},
+
+ {color:'#00558C', ic:'<svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 10 44 18 24 26 4 18Z"/><path d="M12 22v9c0 3 5 6 12 6s12-3 12-6v-9"/><path d="M44 18v9"/></svg>',
+  title:'Capacitaciones', intro:'Formación práctica para que tu personal sepa actuar ante emergencias.',
+  que:'Dictamos capacitaciones obligatorias y prácticas en materia de higiene y seguridad, con entrega de constancias para tu legajo y cumplimiento ante la ART.',
+  incluye:['Uso y manejo de extintores (práctico)','Procedimientos de evacuación','Primeros auxilios básicos','Prevención de riesgos del puesto','Respuesta ante emergencias','Constancias de capacitación para el legajo'],
+  para:'Todo local o empresa con personal que deba cumplir con capacitaciones obligatorias de seguridad.',
+  tags:['Extintores','Evacuación','Emergencias']},
+];
+
+function openModal(i){
+  const s=SERVICIOS[i];
+  document.getElementById('modalHead').style.background='linear-gradient(135deg,'+s.color+' 0%, #2c2551 120%)';
+  document.getElementById('modalIc').innerHTML=s.ic;
+  document.getElementById('modalTitle').textContent=s.title;
+  document.getElementById('modalIntro').textContent=s.intro;
+  let html='<h4>📌 ¿Qué es?</h4><p style="color:#41394d;font-size:15px;">'+s.que+'</p>';
+  html+='<h4>✅ Qué incluye</h4><ul>'+s.incluye.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+  html+='<h4>👥 ¿Para quién es?</h4><p style="color:#41394d;font-size:15px;">'+s.para+'</p>';
+  html+='<div class="modal-tags">'+s.tags.map(t=>'<span>'+t+'</span>').join('')+'</div>';
+  const wa='https://wa.me/5493624313645?text='+encodeURIComponent('Hola LOOKBEN! Quiero consultar por el servicio de '+s.title+'.');
+  html+='<div class="modal-cta"><a href="'+wa+'" class="btn btn-wa"><svg width="22" height="22" viewBox="0 0 32 32" fill="#fff"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.9 6.5L4 29l7.2-1.9c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3Z"/></svg> Consultar por este servicio</a></div>';
+  document.getElementById('modalBody').innerHTML=html;
+  document.getElementById('modalOv').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOv').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
 function enviarWA(e){
   e.preventDefault();
   const n=document.getElementById('f_nombre').value;
